@@ -130,7 +130,7 @@ h2, h3, h4 { letter-spacing: -0.01em; }
 /* Solid Single-Color Image Canvases */
 .img-canvas {
     width: 100%;
-    min-height: 250px;
+    height: 450px;
     flex-grow: 1;
     transition: transform var(--transition-smooth);
 }
@@ -165,4 +165,29 @@ h2, h3, h4 { letter-spacing: -0.01em; }
     .bento-card { padding: 1.5rem; }
     h1 { font-size: 2.2rem; }
     .fade-up { transition-delay: 0s !important; }
+}
+
+/* Ensure the container hides the parts of the image that don't fit */
+.img-canvas {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Force the image to fill the container without stretching */
+.showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* Crops the image to fit the box perfectly */
+    object-position: top; /* Keeps the top of the design visible (best for web showcases) */
+    display: block;
+}
+
+/* Responsive adjustment: reduce height on smaller screens so it doesn't look too tall */
+@media (max-width: 768px) {
+    .img-canvas {
+        height: 220px !important;
+    }
 }
