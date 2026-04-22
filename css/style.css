@@ -1,0 +1,168 @@
+/* Color Strategy (60:30:10) Strict Adherence
+  60% - Crisp White (#ffffff)
+  30% - Atomic Orange (#E85D04)
+  10% - Solid Black (#000000)
+*/
+
+:root {
+    --color-white: #ffffff;
+    --color-smooth: #7EB5A6; /* Atomic Orange */
+    --color-black: #000000;
+    --color-text-muted: #52525b;
+    
+    --radius-box: 24px;
+    /* Buttery smooth cubic bezier for high-end feel */
+    --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Bento Card Base */
+.bento-card {
+    border-radius: var(--radius-box);
+    padding: 2.5rem;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    transform-style: preserve-3d;
+    will-change: transform, box-shadow;
+}
+
+/* Card Variations */
+.bento-primary { background-color: var(--color-white); border: 2px solid var(--color-smooth); }
+.bento-secondary { background-color: var(--color-smooth); border: 1px solid var(--color-smooth); color: var(--color-white); }
+.bento-white { background-color: var(--color-white); border: 1px solid rgba(0,0,0,0.04); }
+
+/* Hover Animations */
+.bento-card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    z-index: 10;
+}
+
+/* Typography & Elements */
+h1 { letter-spacing: -0.03em; }
+h2, h3, h4 { letter-spacing: -0.01em; }
+.text-muted { color: var(--color-text-muted) !important; }
+.text-white-50 { color: rgba(255, 255, 255, 0.7) !important; }
+
+.badge-custom {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Buttons */
+.btn-dark-custom {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 2px solid var(--color-black);
+    transition: all var(--transition-smooth);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.btn-dark-custom:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    transform: translateY(-3px);
+}
+
+.btn-light-custom {
+    background-color: var(--color-smooth);
+    color: var(--color-white); /* White text to contrast the orange */
+    border: 2px solid transparent;
+    transition: all var(--transition-smooth);
+}
+.btn-light-custom:hover { 
+    background-color: var(--color-black); 
+    color: var(--color-white);
+    transform: translateY(-3px); 
+}
+
+/* Stack List & Process Steps */
+.stack-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-weight: 600;
+    transition: padding-left var(--transition-smooth), color var(--transition-smooth);
+}
+.stack-list li:hover { 
+    padding-left: 15px; 
+    color: var(--color-smooth); /* Shifts to orange on hover */
+    cursor: default; 
+}
+.stack-list li:last-child { border-bottom: none; }
+
+.step-circle {
+    width: 36px; height: 36px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.status-dot {
+    width: 16px; height: 16px;
+    background-color: var(--color-black);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+    animation: pulse 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
+    70% { box-shadow: 0 0 0 12px rgba(0, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+
+/* Solid Single-Color Image Canvases */
+.img-canvas {
+    width: 100%;
+    min-height: 250px;
+    flex-grow: 1;
+    transition: transform var(--transition-smooth);
+}
+
+.img-canvas img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-box);
+}
+
+.large-project .img-canvas { min-height: 400px; }
+
+/* Strict adherence to the color palette */
+.canvas-accent { background-color: var(--color-smooth); }
+.canvas-white { background-color: var(--color-white); border: 1px solid rgba(0,0,0,0.06); }
+
+
+/* Ultra-smooth Scroll Reveal Classes */
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+    .bento-card { padding: 1.5rem; }
+    h1 { font-size: 2.2rem; }
+    .fade-up { transition-delay: 0s !important; }
+}
